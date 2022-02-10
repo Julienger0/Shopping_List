@@ -11,9 +11,12 @@ function App() {
     e.preventDefault()
     if (!name) {
       //alert
+      showAlert(true, 'danger', 'please enter value');
+
     }
     else if (name && isEditing) {
       //deal with edit
+      
     }
     else {
       //show alert
@@ -22,11 +25,16 @@ function App() {
       setName('')
     }
   }
+
+  const showAlert = (show = false, type = '', msg = '') => {
+    setAlert({ show, type, msg });
+  };
+
   return (
     // il faut centrer la div
     <div className="container">
       <form className="" onSubmit={handleSubmit}>
-        {alert.show && <Alert />}
+        {alert.show && <Alert {...alert} removeAlert={showAlert}/>}
         <h3>Shopping List</h3>
         <div className="submit">
           <input type="text" placeholder="Enter a Product" value={name} onChange={(e) => setName(e.target.value)} />

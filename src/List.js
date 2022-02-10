@@ -20,3 +20,5 @@ function List({ items }) {
         </div>
     )
 }
+
+export default List
