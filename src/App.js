@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import List from './List'
 import Alert from './Alert'
+import './style.css'
 
 
 const getLocalStorage = () => {
@@ -21,7 +22,6 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!name) {
-      //alert
       showAlert(true, 'danger', 'please enter value');
 
     }
@@ -72,21 +72,20 @@ function App() {
     localStorage.setItem('list', JSON.stringify(list));
   }, [list]);
   return (
-    // il faut centrer la div
-    <div className="container">
-      <form className="" onSubmit={handleSubmit}>
+    <div className="content">
+      <form className="form" onSubmit={handleSubmit}>
         {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
         <h3>Shopping List</h3>
         <div className="submit">
-          <input type="text" placeholder="Enter a Product" value={name} onChange={(e) => setName(e.target.value)} />
-          <button type="submit" className="btn" ></button>
-          {isEditing ? 'edit' : 'submit'}
+          <input type="text" className="bar" placeholder="Enter a Product" value={name} onChange={(e) => setName(e.target.value)} />
+          <button type="submit" className=" btn-submit" >{isEditing ? 'edit' : 'Submit'}</button>
+          
         </div>
       </form>
       {list.length > 0 && (
-        <div className="">
+        <div className="productlist">
           <List items={list} removeItem={removeItem} editItem={editItem} />
-          <button className="btn" onClick={clearList}>Clear Items</button>
+          <button className=" clear-btn" onClick={clearList}>Clear Items</button>
         </div>
 
       )}

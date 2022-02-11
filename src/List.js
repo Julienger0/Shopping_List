@@ -7,8 +7,8 @@ function List({ items, removeItem ,editItem}) {
             {items.map((item) => {
                 const { id, title } = item;
                 return (
-                    <div key={id} className="">
-                        <p className="">{title}</p>
+                    <div key={id} className="item">
+                        <p className="title">{title}</p>
                         <div className="btn-group">
                             <button type='button' className="btn" onClick={()=>editItem(id)}><FaEdit /></button>
                             <button type='button' className="btn" onClick={()=> removeItem(id)}><FaTrash /></button>
